@@ -12,11 +12,11 @@ AWS_REGION="us-east-1"
 
 #gll bucket namen ändern
 # Bucket-Namen (existieren bei dir bereits so)
-IN_BUCKET="m346-face-in-$(whoami)"
-OUT_BUCKET="m346-face-out-$(whoami)"
+IN_BUCKET="project-inbucket$(whoami)"
+OUT_BUCKET="project-outbucket$(whoami)"
 
 # Lambda / Rolle / Projektpfad
-FUNCTION_NAME="face-recognition-lambda"
+FUNCTION_NAME="faceRecognitionFunction"
 LAMBDA_ROLE="LabRole"
 PROJECT_DIR="$HOME/FaceRecognitionLambda/src/FaceRecognitionLambda"
 
