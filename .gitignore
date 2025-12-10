@@ -1,0 +1,39 @@
+## Visual Studio und Projektausschluss
+# Exclude the Visual Studio user-specific settings directory
+.vs/
+
+# Exclude all 'bin' and 'obj' directories
+[Bb]in/
+[Oo]bj/
+
+# Exclude NuGet packages directory
+# This might not be necessary if you are restoring packages, but is safe to include.
+packages/
+
+# Exclude user-specific files
+*.user
+*.suo
+
+# Exclude temporary files and build artifacts
+*.pdb
+*.Designer.cs
+*.cache
+*.log
+
+# Exclude the project's output folder for different configurations
+*/[Dd]ebug/
+*/[Rr]elease/
+
+# Exclusion for Rider/ReSharper
+.idea/
+
+# Exclude compiled output and deployment artifacts
+*.exe
+*.dll
+*.appx
+*.pri
+
+# Exclude the VSIX ID file that caused the error in your screenshot
+# .vs/Projektarbeit_M346/FileContentIndex/83545f59-d8b6-4099-964c-cf42960a46f2.vsidx
+# The general rule .vs/ covers this, but adding the specific file type too:
+*.vsidx
