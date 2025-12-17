@@ -10,7 +10,7 @@ using Amazon.S3.Model;
 using Amazon.S3.Util;
 using System.Collections.Generic;
 
-namespace facereconigiation.Tests;
+namespace facerecognition.Tests;
 
 public class FunctionTest
 {
@@ -19,7 +19,7 @@ public class FunctionTest
     {
         IAmazonS3 s3Client = new AmazonS3Client(RegionEndpoint.USWest2);
 
-        var bucketName = "lambda-facereconigiation-".ToLower() + DateTime.Now.Ticks;
+        var bucketName = "lambda-facerecognition-".ToLower() + DateTime.Now.Ticks;
         var key = "text.txt";
 
         // Create a bucket an object to setup a test data.

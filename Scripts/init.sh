@@ -10,10 +10,9 @@ set -euo pipefail
 
 AWS_REGION="us-east-1"
 
-#gll bucket namen ändern
 # Bucket-Namen (existieren bei dir bereits so)
-IN_BUCKET="project-inbucket$(whoami)"
-OUT_BUCKET="project-outbucket$(whoami)"
+IN_BUCKET="project-inbucket"
+OUT_BUCKET="project-outbucket"
 
 # Lambda / Rolle / Projektpfad
 FUNCTION_NAME="faceRecognitionFunction"
