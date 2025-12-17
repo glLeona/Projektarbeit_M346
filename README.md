@@ -26,3 +26,30 @@ Richten sie zwei S3 Buckets ein. Ein Eingabebucket für hochgeladene Bilder und 
 #### 2.4 Planung und Organisation
 
 Nach dem Klären des Projektauftrags werden die Dreiergruppen selbständig gebildet und der Lehrperson bekannt gegeben. Im Unterricht stehen 3x2 Lektionen Zeit zur Verfügung. Erstellen Sie regelmässige Commits in Ihrem Repository und arbeiten Sie in der Gruppe mit einzelnen individuellen UserAccounts vom jeweilig eingesetzten Git-Anbieter. Laden Sie Ihre Lehrperson ebenfalls in das Repository ein. Die Abgabe der Projektarbeit findet über die Angabe des Repositories statt. Nach dem Abgabedatum dürfen keine Änderungen mehr vorgenommen werden. Die Lehrperson beurteilt Ihre Arbeit aufgrund des Repositories, der Commits und der Dokumentation mit Hilfe der nachfolgenden Bewertungskriterien.
+
+## 3. Aufgabeneinteillung
+
+| Aufgabe                   |   Zugeteilt   |  Kommentar  |                                                                                              |
+| ------------------------- | --------------| ----------- | -------------------------------------------------------------------------------------------- |
+| Dokumentation             | Merve         |             |
+| lambda-funktion           | Davina, Leona |             |
+
+## 4. Vorgehen
+
+### 4.1 Projektinitialisierung
+
+#### 4.1.1 Teamzusammensetzung und Rollenverteilung
+
+Die Bildung unseres Dreier-Teams erfolgte nach der Klärung des Projektauftrags. Jedes Teammitglied übernahm spezifische Verantwortlichkeiten, um eine effiziente Zusammenarbeit sicherzustellen.
+
+### 4.2 Umsetzung
+
+#### 4.2.1 AWS-Komponenten erstellen und konfigurieren
+
+Die praktische Umsetzung begann mit der Erstellung und Konfiguration der erforderlichen AWS-Komponenten. Dies umfasste die Einrichtung von Buckets auf Amazon S3 sowie die Implementierung von Lambda-Funktionen für die Gesichtserkennung. 
+<img width="1020" height="134" alt="image" src="https://github.com/user-attachments/assets/5986f60b-98f4-454a-8f75-089b0e457411" />
+Ebenfalls wurde ein Github-Repository für den programmierten C# Code und die Markdown Dokumentation erstellt.
+
+#### 4.2.2 Programmierung der Gesichtserkennung
+
+Die Programmierung der Gesichtserkennugsfunktionalität erfolgte unter Verwendnung von C# in Visual Studio. Der Code wurde so gestaltet, das er genügend Kommentare fürs Verständnis erhält.
