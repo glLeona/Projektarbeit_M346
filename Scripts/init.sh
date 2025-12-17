@@ -11,8 +11,8 @@ set -euo pipefail
 AWS_REGION="us-east-1"
 
 # Bucket-Namen (existieren bei dir bereits so)
-IN_BUCKET="project-inbucket"
-OUT_BUCKET="project-outbucket"
+IN_BUCKET="project-inbucket$(whoami)"
+OUT_BUCKET="project-outbucket$(whoami)"
 
 # Lambda / Rolle / Projektpfad
 FUNCTION_NAME="faceRecognitionFunction"
