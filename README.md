@@ -29,10 +29,10 @@ Nach dem Klären des Projektauftrags werden die Dreiergruppen selbständig gebil
 
 ## 3. Aufgabeneinteillung
 
-| Aufgabe                   |   Zugeteilt   |  Kommentar  |                                                                                              |
-| ------------------------- | --------------| ----------- | -------------------------------------------------------------------------------------------- |
-| Dokumentation             | Merve         |             |
-| lambda-funktion           | Davina, Leona |             |
+| Aufgabe                   |   Zugeteilt   |                                   Kommentar                                                             |
+| ------------------------- | --------------| ------------------------------------------------------------------------------------------------------- |
+| Dokumentation             | Merve         |             
+| lambda-funktion           | Davina, Leona |             
 
 ## 4. Vorgehen
 
@@ -53,3 +53,78 @@ Ebenfalls wurde ein Github-Repository für den programmierten C# Code und die Ma
 #### 4.2.2 Programmierung der Gesichtserkennung
 
 Die Programmierung der Gesichtserkennugsfunktionalität erfolgte unter Verwendnung von C# in Visual Studio. Der Code wurde so gestaltet, das er genügend Kommentare fürs Verständnis erhält.
+Der unten gezeigte C# Code ist eine AWS Lambda-Funktion, die auf ein S3 Event reagiert:
+
+public async Task<string?> FunctionHandler(S3Event evnt, ILambdaContext context)
+{
+    var s3Event = evnt.Records?[0].S3;
+    if(s3Event == null)
+    {
+        return null;
+    }
+
+    try
+    {
+        var response = await this.S3Client.GetObjectMetadataAsync(s3Event.Bucket.Name, s3Event.Object.Key);
+        return response.Headers.ContentType;
+    }
+    catch(Exception e)
+    {
+        context.Logger.LogInformation($"Error getting object {s3Event.Object.Key} from bucket {s3Event.Bucket.Name}. Make sure they exist and your bucket is in the same region as this function.");
+        context.Logger.LogInformation(e.Message);
+        context.Logger.LogInformation(e.StackTrace);
+        throw;
+    }
+}
+
+## 4.4 Dokumentation
+
+### 4.4.1 Strukturierung der Dokumentation
+
+Die Dokumentation wurde gemäss den Vorgaben in Markdown geschrieben. Die Struktur folgt den Leitfragen und Gütestufen des Projektauftrags, um eine klare und nachvollziehbare Dokumentation zu gewähleisten.
+
+### 4.4.2 Regelmässige Commits und Git-Nutzung
+
+Um eine effiziente Zusammenarbeit sicherzustellen, wurden regelmässig Commits im Git-Repository durchgeführt. Jede Person hat nach Angabe minimal einen Commit gemacht, sei es beim Programmieren oder beim Schreiben der Dokumentation. Die Git-Nutzung erstreckte sich über die gesamte Projektdauer.
+
+## 4.5 Testdurchführung
+
+### 4.5.1 Definition von Testfällen
+
+Vor der Testdurchführung wurden klare Testfälle definiert, um die Funktionalität und Performance des Services sicherzustellen.
+
+### 4.5.2 Durchführung der Tests und Protokollierung
+
+## 5. Tests
+
+## 6. Reflexion
+
+#### 6.1 Reflexion Davina
+
+##### Lernerfahrung:
+
+##### Zusammenarbeit:
+
+##### Zeitdruck und Herausforderung:
+
+#### 6.2 Reflexion Leona
+
+##### Lernerfahrung:
+
+##### Zusammenarbeit:
+
+##### Zeitdruck und Herausforderung:
+
+#### 6.3 Reflexion Merve
+
+##### Lernerfahrung:
+
+##### Zusammenarbeit:
+
+##### Zeitdruck und Herausforderung:
+
+## 7. Anhang
+
+### 8. Test Case
+
+## 9. Quellen
