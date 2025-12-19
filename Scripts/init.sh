@@ -17,8 +17,7 @@ OUT_BUCKET="project-outbucket$(whoami)"
 # Lambda / Rolle / Projektpfad
 FUNCTION_NAME="faceRecognitionFunction"
 LAMBDA_ROLE="LabRole"
-PROJECT_DIR="$HOME/Users/facerecognition/src/facerecognition"
-
+PROJECT_DIR="../facerecognition/src/facerecognition"
 ############################
 # Hilfsfunktionen
 ############################
