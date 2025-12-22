@@ -6,19 +6,19 @@
 set -euo pipefail
 
 AWS_REGION="us-east-1"
-IN_BUCKET="m346-face-in-bucket"
-OUT_BUCKET="m346-face-out-bucket"
+IN_BUCKET="project-inbucket$(whoami)"
+OUT_BUCKET="project-outbucket$(whoami)"
 
 # Pfad zum Testbild (Standard)
 #gll -> umändern
-DEFAULT_IMAGE="$HOME/Bilder/Karin keller sutter.jpg"
+DEFAULT_IMAGE="C:\2022-04-brkks-465.png"
 
 # optional: Bild kann als Argument übergeben werden
 IMAGE_PATH="${1:-$DEFAULT_IMAGE}"
 
 if [[ ! -f "$IMAGE_PATH" ]]; then
   echo "Fehler: Datei '$IMAGE_PATH' existiert nicht."
-  echo "Verwendung: $0 /pfad/zum/bild.jpg"
+  echo "Verwendung: $0 /pfad/zum/bild.png"
   exit 1
 fi
 
