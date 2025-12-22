@@ -7,6 +7,7 @@ using Amazon.Lambda.S3Events;
 using Amazon.Rekognition;
 using Amazon.Rekognition.Model;
 using Amazon.S3;
+using Amazon.Lambda.APIGatewayEvents;
 
 // Damit Lambda das Event korrekt serialisiert / deserialisiert:
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
