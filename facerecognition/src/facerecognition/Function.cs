@@ -14,11 +14,11 @@ using Amazon.S3;
 namespace faceRecognition;
 
 /// <summary>
-/// Lambda-Funktion für die Erkennung bekannter Persönlichkeiten auf Bildern,
+/// Lambda-Funktion fï¿½r die Erkennung bekannter Persï¿½nlichkeiten auf Bildern,
 /// die in einen S3-Input-Bucket hochgeladen werden.
 /// 
 /// Ablauf:
-/// 1. S3-Event löst Lambda aus, wenn ein neues Objekt hochgeladen wird.
+/// 1. S3-Event lï¿½st Lambda aus, wenn ein neues Objekt hochgeladen wird.
 /// 2. Rekognition (RecognizeCelebrities) wird aufgerufen.
 /// 3. Ergebnis wird als JSON-Datei in einen Output-Bucket geschrieben.
 /// 
@@ -44,7 +44,7 @@ public class Function
     }
 
     /// <summary>
-    /// Konstruktor für Tests / Dependency Injection.
+    /// Konstruktor fï¿½r Tests / Dependency Injection.
     /// </summary>
     public Function(IAmazonRekognition rekognitionClient, IAmazonS3 s3Client)
     {
@@ -59,12 +59,15 @@ public class Function
     /// konfigurierten S3-Input-Bucket hochgeladen wird.
     /// </summary>
     /// <param name="s3Event">Das S3-Event mit Informationen zum hochgeladenen Objekt.</param>
-    /// <param name="context">Lambda-Kontext (für Logging etc.).</param>
+    /// <param name="context">Lambda-Kontext (fï¿½r Logging etc.).</param>
     public async Task FunctionHandler(S3Event s3Event, ILambdaContext context)
     {
         if (string.IsNullOrWhiteSpace(_outputBucket))
         {
-            context.Logger.LogError("Environment variable OUTPUT_BUCKET is not set. Aborting.");
+            context.Logger.LogError(
+                "Environment variable OUTPUT_BUCKET is not set. " +
+                "Please ensure the Lambda function has the OUTPUT_BUCKET environment variable configured. " +
+                "Aborting function execution.");
             return;
         }
 
@@ -78,7 +81,7 @@ public class Function
 
             try
             {
-                // 1. Rekognition für Celebrity-Erkennung aufrufen
+                // 1. Rekognition fï¿½r Celebrity-Erkennung aufrufen
                 var request = new RecognizeCelebritiesRequest
                 {
                     Image = new Image
@@ -106,7 +109,7 @@ public class Function
                         c.Name,
                         c.MatchConfidence,
                         c.Id,
-                        Urls = c.Urls,     // Links zu Infos über die erkannte Person
+                        Urls = c.Urls,     // Links zu Infos ï¿½ber die erkannte Person
                     }),
                     UnrecognizedFaces = response.UnrecognizedFaces.Count,
                     OrientationCorrection = response.OrientationCorrection,
@@ -119,7 +122,7 @@ public class Function
                     new JsonSerializerOptions { WriteIndented = true }
                 );
 
-                // 4. Dateinamen für das Ergebnis bestimmen (gleicher Name, aber .json)
+                // 4. Dateinamen fï¿½r das Ergebnis bestimmen (gleicher Name, aber .json)
                 var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(objectKey);
                 var outputKey = $"{fileNameWithoutExtension}.json";
 
@@ -137,8 +140,19 @@ public class Function
             }
             catch (Exception ex)
             {
-                // Fehler werden geloggt, Lambda soll aber nicht komplett abstürzen
-                context.Logger.LogError($"Error processing object {bucketName}/{objectKey}: {ex}");
+                // Fehler werden geloggt, Lambda soll aber nicht komplett abstï¿½rzen
+                context.Logger.LogError(
+                    $"Error processing object {bucketName}/{objectKey}: {ex.Message}\n" +
+                    $"Stack trace: {ex.StackTrace}\n" +
+                    $"Exception type: {ex.GetType().Name}");
+                
+                // Bei S3-Schreibfehlern zustzliche Informationen loggen
+                if (ex is Amazon.S3.AmazonS3Exception s3Ex)
+                {
+                    context.Logger.LogError(
+                        $"S3 Error Code: {s3Ex.ErrorCode}, Status Code: {s3Ex.StatusCode}, " +
+                        $"Target Bucket: {_outputBucket}");
+                }
             }
         }
     }
