@@ -63,7 +63,7 @@ dotnet lambda deploy-function \
   "$FUNCTION_NAME" \
   --function-role "$LAMBDA_ROLE" \
   --region "$AWS_REGION" \
-  --environment-variables "$OUT_BUCKET"
+  --environment-variables "OUT_BUCKET=$OUT_BUCKET"
 
 ############################
 # 3. Lambda-ARN holen
