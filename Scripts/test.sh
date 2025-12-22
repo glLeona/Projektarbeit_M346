@@ -11,7 +11,7 @@ OUT_BUCKET="project-outbucket$(whoami)"
 
 # Pfad zum Testbild (Standard)
 #gll -> umändern
-DEFAULT_IMAGE="C:\2022-04-brkks-465.png"
+DEFAULT_IMAGE="$HOME/vmadmin/Pictures/Official_portrait_of_Barack_Obama-2.jpg"
 
 # optional: Bild kann als Argument übergeben werden
 IMAGE_PATH="${1:-$DEFAULT_IMAGE}"
