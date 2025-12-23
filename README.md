@@ -52,7 +52,7 @@ Um die Fertigkeiten mit der Cloud praktisch zu zeigen, findet im letzten Teil vo
 
 #### 2.2. Ziele
 
-Es sollen die folgenden Ziele in der Projektarbeit erreicht werden: 1. Ein Cloud-Service soll automatisch bekannte Persönlichkeiten auf Fotos erkennen. Die Details der Analyse werden dann entsprechend in einer JSON-Datei gespeichert. 2. Der Service soll mit allen erforderlichen Komponenten durch Ausführung eines Scripts von einem Windows oder Linux-Client aus im AWS Learner-Lab in Betrieb genommen werden. 3. Alle für die Inbetriebnahme benötigten Dateien und die zugehörige Dokumentation müssen in einem Git-Repository versioniert abgelegt werden. 4. Eine Markdown Dokumentation die den Aufbau des Services zeigt und die Inbetriebnahme beschreibt soll geschrieben werden. 5. Der Cloud-Service soll getestet werden, wobei alle Testfälle in der Dokumentation dokumentiert und mittels Screenshots protokolliert werden.
+Ein FaceRecognition-Service erkennt bekannte Persoenlichkeiten auf Fotos, die in ein S3 In-Bucket hochgeladen werden. Eine AWS Lambda Funktion wird per S3 Trigger ausgeloest, ruft AWS Rekognition (RecognizeCelebrities) auf und speichert die Analyse als JSON in einem S3 Out-Bucket.
 
 #### 2.3. Aufgabenstellung
 
@@ -79,59 +79,35 @@ Die Bildung unseres Dreier-Teams erfolgte nach der Klärung des Projektauftrags.
 
 ### 4.2. Umsetzung
 
-#### 4.2.1. AWS-Komponenten erstellen und konfigurieren
+#### 4.2.1. Architektur
 
-Die praktische Umsetzung begann mit der Erstellung und Konfiguration der erforderlichen AWS-Komponenten. Dies umfasste die Einrichtung von Buckets auf Amazon S3 sowie die Implementierung von Lambda-Funktionen für die Gesichtserkennung. 
-<img width="1020" height="134" alt="image" src="https://github.com/user-attachments/assets/5986f60b-98f4-454a-8f75-089b0e457411" />
-Ebenfalls wurde ein Github-Repository für den programmierten C# Code und die Markdown Dokumentation erstellt.
+- S3 In-BUcket: Upload von JPG/PNG
+- Lambda (C# / .NET 8): Verarbeitung + Rekognition
+- S3 Out-Bucket: JSON-Resultat pro Bild
 
-#### 4.2.2. Gesamtaufbau
+Siehe: docs/architecture.md
+
+#### 4.2.2. Voraussetzungen (Client)
+
+- AWS Learner Lab Credentials in der Shell aktiv (AWS CLI v2 muss funktionieren)
+  - Test: aws sts get-caller-identify
+- dotnet SDK 8
+- zip
+- jq (nur für test.sh)
+
+Windows:
+- via WSL oder Git Bash
+
+#### 4.2.2. Quickstart (vollautomatisiert)
 ```
-┌─────────────┐      ┌──────────────┐      ┌─────────────────┐
-│   Benutzer  │─────▶│  S3 In-Bucket │─────▶│ Lambda Funktion │
-│  (Aufladen) │      │              │      │  (C# .NET 8)    │
-└─────────────┘      └──────────────┘      └─────────────────┘
-                            │                       │
-                            │                       ▼
-                            │              ┌─────────────────┐
-                            │              │ AWS Erkennung   │
-                            │              │(bekannte Person)│
-                            │              └─────────────────┘
-                            │                       │
-                            ▼                       ▼
-                     ┌──────────────┐      ┌────────────────┐
-                     │ S3 Out-Bucket │◀─────│ JSON Resultat  │
-                     └──────────────┘      └────────────────┘
+chmod +x Scripts/init.sh Scripts/test.sh
+./Scripts/init.sh
+./Scripts/test.sh <pfad/zum/bild.jpg>
 ```
 
 #### 4.2.3. Programmierung der Gesichtserkennung
 
 Die Programmierung der Gesichtserkennugsfunktionalität erfolgte unter Verwendnung von C# in Visual Studio. Der Code wurde so gestaltet, das er genügend Kommentare fürs Verständnis erhält.
-Der unten gezeigte C# Code ist eine AWS Lambda-Funktion, die auf ein S3 Event reagiert:
-
-```
-public async Task<string?> FunctionHandler(S3Event evnt, ILambdaContext context)
-{
-    var s3Event = evnt.Records?[0].S3;
-    if(s3Event == null)
-    {
-        return null;
-    }
-
-    try
-    {
-        var response = await this.S3Client.GetObjectMetadataAsync(s3Event.Bucket.Name, s3Event.Object.Key);
-        return response.Headers.ContentType;
-    }
-    catch(Exception e)
-    {
-        context.Logger.LogInformation($"Error getting object {s3Event.Object.Key} from bucket {s3Event.Bucket.Name}. Make sure they exist and your bucket is in the same region as this function.");
-        context.Logger.LogInformation(e.Message);
-        context.Logger.LogInformation(e.StackTrace);
-        throw;
-    }
-}
-```
 
 ## 4.4. Dokumentation
 
