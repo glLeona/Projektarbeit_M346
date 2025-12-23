@@ -1,6 +1,6 @@
 # Reflexion (Projektprozess)
 
-## Person 1 – Davina
+## Person 1 – Davina Melzer
 - Was lief gut?
   
   - Die Zusammenarbeit in der Gruppe funktionierte gut. Die Aufgaben wurden klar aufgeteilt, wobei ein Teil der Gruppe für die praktische Umsetzung mit AWS Rekognition und der andere Teil für die Dokumentation verantwortlich war. Trotz dieser Aufteilung fand ein regelmässiger Austausch statt, sodass Zwischenergebnisse gemeinsam überprüft und offene Fragen geklärt werden konnten. Dadurch konnten sowohl die technische Umsetzung als auch die Dokumentation korrekt und verständlich ausgearbeitet werden. Zudem konnte ich durch eigenständige Recherche ein vertieftes Verständnis für den technischen Ablauf der Gesichtserkennung sowie für cloudbasierte Services gewinnen.
