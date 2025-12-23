@@ -13,13 +13,18 @@
   
   - Für zukünftige Projekte würde ich bereits zu Beginn eine grobe Struktur und einen Ablaufplan erstellen, auch wenn noch nicht alle Anforderungen geklärt sind. Zudem sollten relevante Informationen und Quellen frühzeitig gesammelt und festgehalten werden. Eine frühere und gezieltere Abstimmung im Team über offene Fragen sowie eine bessere Zeitplanung für die Einarbeitung in neue Technologien würden helfen, Zeitdruck zu reduzieren und den Arbeitsprozess effizienter zu gestalten.
 
-## Person 2 – [Name]
+## Person 2 – Leona Glanzmann
 - Was lief gut?
-  - [eintragen]
+  
+  - Zu Beginn des Projekts war die Zusammenarbeit noch nicht optimal, doch mit der Zeit verbesserte sie sich deutlich und funktionierte sehr gut. Wir konnten die Aufgaben innerhalb der Gruppe sinnvoll aufteilen und diese nach unseren jeweiligen Stärken verteilen. Dabei arbeitete jedoch nicht jede Person nur für sich, sondern wir unterstützten uns gegenseitig, halfen einander bei Problemen und korrigierten Fehler oder vergessene Punkte gemeinsam. Ich persönlich konnte durch dieses Projekt viel lernen. Ich verstehe nun Lambda-Funktionen und Buckets deutlich besser. Zudem konnte ich vieles aus dem Unterricht anwenden, welches mir als Grundlage für das Verständnis des Projekts diente. Insgesamt bin ich mit dem Resultat zufrieden, und der Lernfaktor war sehr hoch. Darüber hinaus habe ich gelernt, in einem Team zu arbeiten und mich auf andere verlassen zu können.
+  
 - Was lief nicht gut / Probleme?
-  - [eintragen]
+  
+  - Die Konfiguration zu Beginn stellte für mich eine grosse Herausforderung dar, da ich zunächst nicht genau wusste, wie ich vorgehen sollte. Nach einiger Recherche und mehreren Rückfragen beim Lehrer erhielt ich jedoch die notwendigen Informationen zur Konfiguration. Ein weiterer Nachteil war, dass es nur wenige Dokumentationen zur Lambda-Face-Recognition-Funktion gab, wodurch sich die Umsetzung zusätzlich erschwerte. Zudem traten viele Fehlermeldungen auf und über längere Zeit funktionierte unser Code gar nicht. In dieser Phase war es notwendig, intensiv zu testen und verschiedene Ansätze auszuprobieren, bis schliesslich alles korrekt funktionierte.
+    
 - Konkrete Verbesserungen für ein naechstes Projekt
-  - [eintragen]
+  
+  - Ein wichtiger Verbesserungspunkt für zukünftige Projekte wäre das Zeitmanagement sowie die eigene Motivation. Ich habe gemerkt, dass ich den zeitlichen Aufwand unterschätzt habe und wir insgesamt sehr lange an dem Projekt gearbeitet haben Zudem fehlte mir zeitweise die Motivation, wodurch sich die Bearbeitung des Projekts verzögerte. In einem nächsten Projekt würde ich daher früher auf die Lehrperson zugehen, um mir mehr Unterstützung zu holen.
 
 ## Person 3 – [Name]
 - Was lief gut?
