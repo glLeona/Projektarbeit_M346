@@ -148,12 +148,12 @@ Um eine effiziente Zusammenarbeit sicherzustellen, wurden regelmässig Commits i
 ## 6. Tests und Protokolle
 
 - Testfälle + Screenshots: docs/tests.md
-- Ablage Screenshots: docs/screenshots/
 
 ## 7. Reflexion
 
 - Reflexion pro Teammitglied: docs/reflection.md
 
-## 8. Anhang
+## 8. Quellen
+Amazon Web [What is Amazon EC2](https://www.w3schools.com/whatis/whatis_aws_ec2.asp) 23.12.2025
 
-## 9. Quellen
+Markdown Guide [Getting Started | Markdown Guide](https://www.markdownguide.org/getting-started/) 23.12.2025
