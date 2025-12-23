@@ -1,8 +1,37 @@
 # Projektarbeit_M346 Face Recognition Tool
 
 ## Inhaltsverzeichnis
-1. [Einleitung](#einleitung)
-   1.1. [Projektüberblick](#projektüberblick)
+1. [Einleitung](#1-einleitung)
+   1. [Projektüberblick](#11-projektüberblick)
+   2. [Zielsetzung](#12-zielsetzung)
+2. [Projektauftrag](#2-projektauftrag)
+   1. [Ausgangslage](#21-ausgangslage)
+   2. [Ziele](#22-ziele)
+   3. [Aufgabenstellung](#23-aufgabenstellung)
+   4. [Planung und Organisation](#24-planung-und-organisation)
+3. [Aufgabeneinteillung](#3-aufgabeneinteillung)
+4. [Vorgehen](#4-vorgehen)
+   1. [Projektinitialisierung](#41-projektinitialisierung)
+      1. [Teamzusammensetzung und Rollenverteilung](#411-teamzusammensetzung-und-rollenverteilung)
+   2. [Umsetzung](#42-umsetzung)
+      1. [AWS-Komponenten erstellen und konfigurieren](#421-aws-komponenten-erstellen-und-konfigurieren)
+      2. [Gesamtaufbau](#422-gesamtaufbau)
+      3. [Programmierung der Gesichtserkennung](#423-programmierung-der-gesichtserkennung)
+   3. [Dokumentation](#44-dokumentation)
+      1. [Strukturierung der Dokumentation](#441-strukturierung-der-dokumentation)
+      2. [Regelmässige Commits und Git-Nutzung](#442-regelmässige-commits-und-git-nutzung)
+   4. [Testdurchführung](#45-testdurchführung)
+      1. [Definition von Testfällen](#451-definition-von-testfällen)
+      2. [Durchführung der Tests und Protokollierung](#452-durchführung-der-tests-und-protokollierung)
+5. [Tests](#5-tests)
+6. [Reflexion](#6-reflexion)
+   1. [Reflexion Davina](#61-reflexion-davina)
+   2. [Reflexion Leona](#62-reflexion-leona)
+   3. [Reflexion Merve](#63-reflexion-merve)
+7. [Anhang](#7-anhang)
+8. [Test Case](#8-test-case)
+9. [Quellen](#9-quellen)
+   
 
 ## 1. Einleitung
 
