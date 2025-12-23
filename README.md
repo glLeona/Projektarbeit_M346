@@ -23,14 +23,16 @@
    4.4 [Testdurchführung](#45-testdurchführung)  
        4.4.1 [Definition von Testfällen](#451-definition-von-testfällen)  
        4.4.2 [Durchführung der Tests und Protokollierung](#452-durchführung-der-tests-und-protokollierung)  
-5. [Tests](#5-tests)  
-6. [Reflexion](#6-reflexion)  
+5. [Tests](#5-tests)
+   5.1 [Testcase 1](#51-testcase-1)
+   5.2 [Testcase 2](#52-testcase-2)
+7. [Reflexion](#6-reflexion)  
    6.1 [Reflexion Davina](#61-reflexion-davina)  
    6.2 [Reflexion Leona](#62-reflexion-leona)  
    6.3 [Reflexion Merve](#63-reflexion-merve)  
-7. [Anhang](#7-anhang)  
-8. [Test Case](#8-test-case)  
-9. [Quellen](#9-quellen)
+8. [Anhang](#7-anhang)  
+9. [Test Case](#8-test-case)  
+10. [Quellen](#9-quellen)
    
 
 ## 1. Einleitung
@@ -62,10 +64,10 @@ Nach dem Klären des Projektauftrags werden die Dreiergruppen selbständig gebil
 
 ## 3. Aufgabeneinteillung
 
-| Aufgabe                   |   Zugeteilt   |                                   Kommentar                                                             |
-| ------------------------- | --------------| ------------------------------------------------------------------------------------------------------- |
-| Dokumentation             | Merve         |             
-| lambda-funktion           | Davina, Leona |             
+| Aufgabe                                                        |        Zugeteilt           |
+| ---------------------------------------------------------------|--------------------------- |
+| Dokumentation, Struktur, Programmier-Unterstützung             | Merve                      |
+| lambda-funktion, Testing, Script                               | Davina, Leona              |
 
 ## 4. Vorgehen
 
@@ -84,9 +86,10 @@ Die praktische Umsetzung begann mit der Erstellung und Konfiguration der erforde
 Ebenfalls wurde ein Github-Repository für den programmierten C# Code und die Markdown Dokumentation erstellt.
 
 #### 4.2.2. Gesamtaufbau
+```
 ┌─────────────┐      ┌──────────────┐      ┌─────────────────┐
-│   Benutzer  │─────▶│  S3 In-Bucket│─────▶│ Lambda Funktion│
-│  (Aufladen) │      │              │      │   (C# .NET 8)   │
+│   Benutzer  │─────▶│  S3 In-Bucket │─────▶│ Lambda Funktion │
+│  (Aufladen) │      │              │      │  (C# .NET 8)    │
 └─────────────┘      └──────────────┘      └─────────────────┘
                             │                       │
                             │                       ▼
@@ -97,14 +100,16 @@ Ebenfalls wurde ein Github-Repository für den programmierten C# Code und die Ma
                             │                       │
                             ▼                       ▼
                      ┌──────────────┐      ┌────────────────┐
-                     │ S3 Out-Bucket│◀─────│ JSON Resultat │
+                     │ S3 Out-Bucket │◀─────│ JSON Resultat  │
                      └──────────────┘      └────────────────┘
+```
 
-#### 4.2.2. Programmierung der Gesichtserkennung
+#### 4.2.3. Programmierung der Gesichtserkennung
 
 Die Programmierung der Gesichtserkennugsfunktionalität erfolgte unter Verwendnung von C# in Visual Studio. Der Code wurde so gestaltet, das er genügend Kommentare fürs Verständnis erhält.
 Der unten gezeigte C# Code ist eine AWS Lambda-Funktion, die auf ein S3 Event reagiert:
 
+```
 public async Task<string?> FunctionHandler(S3Event evnt, ILambdaContext context)
 {
     var s3Event = evnt.Records?[0].S3;
@@ -126,6 +131,7 @@ public async Task<string?> FunctionHandler(S3Event evnt, ILambdaContext context)
         throw;
     }
 }
+```
 
 ## 4.4. Dokumentation
 
@@ -145,17 +151,63 @@ Vor der Testdurchführung wurden klare Testfälle definiert, um die Funktionalit
 
 ### 4.5.2. Durchführung der Tests und Protokollierung
 
+Die Tests wurden durchgeführt und mittels Screenshots dokumentiert. Das Testprotokoll enthält Informationen zu Testzeitpunkten, Testpersonen und bietet aussagekräftige Fazits zu den Testergebnissen.
+
 ## 5. Tests
+In diesem Projekt wurden verschiedene Tests durchgeführt, um sicherzustellen, dass die implementierte Cloudlösung den definierten Anforderungen entspricht. Die Tests umfassen sowohl manuelle als auch automatisierte Prüfungen, um die Zuverlässigkeit, Sicherheit und Funktionalität der Lösung sicherzustellen.
+
+### 5.1 Testcase 1
+
+| Test Nr.    | Name           | Tester    |
+|:-----------:|:--------------:|:---------:|
+| T1          | Barack Obama   | Davina    |
+
+Testdatum: 22. Dezember 2025
+Testperson: Davina
+Testumgebung: AWS Learner Lab
+
+Ablauf:
+
+- Bild von Obama hochgeladen
+- Fehlermeldung kam:
+
+Fehlermeldung Cloud Shell:
+```
+fatal error: An error occurred (404) when calling the HeadObject operation: Key "Test.jpg.json" does not exist
+```
+
+Fehlermeldung Cloud Watch:
+```
+Error: .NET binaries for Lambda function are not correctly installed in the /var/task directory of the image when the image was built. The /var/task directory is missing the required .deps.json file.
+```
+Status: Nicht erfolgreich
+Bemerkungen: Es gibt keine JSON-Datei zurück.
+
+### 5.2 Testcase 2
+
+| Test Nr.    | Name           | Tester    |
+|:-----------:|:--------------:|:---------:|
+| T2          | Script         | Davina    |
+
+Testdatum: 22. Dezember 2025
+Testperson: Davina
+Testumgebung: AWS Learner Lab
+
+Status:
+Das Skript kann ausgeführt werden, jedoch kommt keine JSON-Datei am Ende.
 
 ## 6. Reflexion
 
 #### 6.1. Reflexion Davina
 
 ##### Lernerfahrung:
+Bei diesem Projekt habe ich gelernt, wie Gesichtserkennung mit AWS Rekognition funktioniert und wie ein technischer Ablauf von der Bilderfassung bis zur Auswertung aufgebaut ist. Da keine Dokumentation zur Verfügung gestellt wurde, musste ich mir die benötigten Informationen selbstständig aus dem Internet zusammensuchen. Dies war teilweise anspruchsvoll, hat mir jedoch geholfen, meine Recherchefähigkeiten zu verbessern und technische Inhalte besser zu verstehen. Außerdem konnte ich mein Wissen über cloudbasierte Services und deren Einsatz im Bereich der Gesichtserkennung erweitern.
 
 ##### Zusammenarbeit:
+Die Zusammenarbeit in der Gruppe war gut. Wir haben die Aufgaben klar aufgeteilt, wobei ein Teil der Gruppe für die praktische Umsetzung mit AWS Rekognition zuständig war und der andere Teil für die Dokumentation. Trotz dieser Aufteilung haben wir uns regelmäßig ausgetauscht, Zwischenergebnisse überprüft und uns gegenseitig unterstützt. So konnten wir sicherstellen, dass sowohl die praktische Arbeit als auch die Dokumentation korrekt und verständlich umgesetzt wurden.
 
 ##### Zeitdruck und Herausforderung:
+Zu Beginn des Projekts gab es einige Schwierigkeiten, da zunächst unklar war, wie AWS Rekognition genau funktioniert und welche Schritte notwendig sind, um die Aufgabe umzusetzen. Da keine Dokumentation vorhanden war, musste erst recherchiert und ausprobiert werden, was viel Zeit in Anspruch nahm. Dadurch entstand zusätzlicher Zeitdruck, was teilweise stressig war. Mit zunehmendem Verständnis und durch den Austausch im Team wurde die Vorgehensweise jedoch klarer. So konnten die Aufgaben strukturierter bearbeitet und Probleme gemeinsam gelöst werden, was den Arbeitsprozess deutlich erleichtert hat.
 
 #### 6.2. Reflexion Leona
 
@@ -174,7 +226,5 @@ Vor der Testdurchführung wurden klare Testfälle definiert, um die Funktionalit
 ##### Zeitdruck und Herausforderung:
 
 ## 7. Anhang
-
-### 8. Test Case
 
 ## 9. Quellen
