@@ -56,12 +56,12 @@ Richten sie zwei S3 Buckets ein. Ein Eingabebucket für hochgeladene Bilder und 
 
 Nach dem Klären des Projektauftrags werden die Dreiergruppen selbständig gebildet und der Lehrperson bekannt gegeben. Im Unterricht stehen 3x2 Lektionen Zeit zur Verfügung. Erstellen Sie regelmässige Commits in Ihrem Repository und arbeiten Sie in der Gruppe mit einzelnen individuellen UserAccounts vom jeweilig eingesetzten Git-Anbieter. Laden Sie Ihre Lehrperson ebenfalls in das Repository ein. Die Abgabe der Projektarbeit findet über die Angabe des Repositories statt. Nach dem Abgabedatum dürfen keine Änderungen mehr vorgenommen werden. Die Lehrperson beurteilt Ihre Arbeit aufgrund des Repositories, der Commits und der Dokumentation mit Hilfe der nachfolgenden Bewertungskriterien.
 
-## 3. Aufgabeneinteillung
+## 3. Aufgabeneinteilung
 
 | Aufgabe                                                        |        Zugeteilt           |
 | ---------------------------------------------------------------|--------------------------- |
 | Dokumentation, Struktur, Programmier-Unterstützung             | Merve                      |
-| lambda-funktion, Testing, Script                               | Davina, Leona              |
+| Lambda-Funktion, Testing, Script                               | Davina, Leona              |
 
 ## 4. Vorgehen
 
@@ -86,8 +86,8 @@ Siehe: docs/architecture.md
 - AWS Learner Lab Credentials in der Shell aktiv (AWS CLI v2 muss funktionieren)
   - Test: aws sts get-caller-identify
 - dotnet SDK 8
-- zip
-- jq (nur für test.sh)
+- Git geklont > git clone https://github.com/glLeona/Projektarbeit_M346.git
+- Bild-Datei (nur für test.sh)
 
 Windows:
 - via WSL oder Git Bash
