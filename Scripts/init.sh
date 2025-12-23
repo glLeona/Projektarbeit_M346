@@ -191,7 +191,7 @@ deploy_lambda() {
   local role_arn="$1"
 
   log "=== Lambda Deploy ==="
-  require_cmd dotnet8
+  require_cmd dotnet
   require_cmd zip
 
   log "dotnet publish (net8.0) ..."
