@@ -13,7 +13,7 @@ SHORT_HEX=$(openssl rand -hex 4)
 
 IN_BUCKET="project-in-bucket-${ACCOUNT_ID}-${TS}-${SHORT_HEX}"
 OUT_BUCKET="project-out-bucket-${ACCOUNT_ID}-${TS}-${SHORT_HEX}"
-LAMBDA_FUNCTION="project-bucket_${ACCOUNT_ID}_${TS}_${SHORT_HEX}"
+LAMBDA_NAME="project-bucket_${ACCOUNT_ID}_${TS}_${SHORT_HEX}"
 
 
 
