@@ -204,7 +204,7 @@ Das Skript kann ausgeführt werden, jedoch kommt keine JSON-Datei am Ende.
 Bei diesem Projekt habe ich gelernt, wie Gesichtserkennung mit AWS Rekognition funktioniert und wie ein technischer Ablauf von der Bilderfassung bis zur Auswertung aufgebaut ist. Da keine Dokumentation zur Verfügung gestellt wurde, musste ich mir die benötigten Informationen selbstständig aus dem Internet zusammensuchen. Dies war teilweise anspruchsvoll, hat mir jedoch geholfen, meine Recherchefähigkeiten zu verbessern und technische Inhalte besser zu verstehen. Außerdem konnte ich mein Wissen über cloudbasierte Services und deren Einsatz im Bereich der Gesichtserkennung erweitern.
 
 ##### Zusammenarbeit:
-Die Zusammenarbeit in der Gruppe war gut. Wir haben die Aufgaben klar aufgeteilt, wobei ein Teil der Gruppe für die praktische Umsetzung mit AWS Rekognition zuständig war und der andere Teil für die Dokumentation. Trotz dieser Aufteilung haben wir uns regelmäßig ausgetauscht, Zwischenergebnisse überprüft und uns gegenseitig unterstützt. So konnten wir sicherstellen, dass sowohl die praktische Arbeit als auch die Dokumentation korrekt und verständlich umgesetzt wurden.
+Die Zusammenarbeit in der Gruppe war gut. Wir haben die Aufgaben klar aufgeteilt, wobei ein Teil der Gruppe für die praktische Umsetzung mit AWS Rekognition zuständig war und der andere Teil für die Dokumentation. Trotz dieser Aufteilung haben wir uns regelmässig ausgetauscht, Zwischenergebnisse überprüft und uns gegenseitig unterstützt. So konnten wir sicherstellen, dass sowohl die praktische Arbeit als auch die Dokumentation korrekt und verständlich umgesetzt wurden.
 
 ##### Zeitdruck und Herausforderung:
 Zu Beginn des Projekts gab es einige Schwierigkeiten, da zunächst unklar war, wie AWS Rekognition genau funktioniert und welche Schritte notwendig sind, um die Aufgabe umzusetzen. Da keine Dokumentation vorhanden war, musste erst recherchiert und ausprobiert werden, was viel Zeit in Anspruch nahm. Dadurch entstand zusätzlicher Zeitdruck, was teilweise stressig war. Mit zunehmendem Verständnis und durch den Austausch im Team wurde die Vorgehensweise jedoch klarer. So konnten die Aufgaben strukturierter bearbeitet und Probleme gemeinsam gelöst werden, was den Arbeitsprozess deutlich erleichtert hat.
@@ -220,10 +220,13 @@ Zu Beginn des Projekts gab es einige Schwierigkeiten, da zunächst unklar war, w
 #### 6.3. Reflexion Merve
 
 ##### Lernerfahrung:
+Das Projekt hat meine Kenntnisse in Cloud-Technologien, insbesondere AWS, erweitert. Ich habe gelernt, wie man effizient S3-Buckets einrichtet, Lambda-Funktionen konfiguriert und CloudFormation für die automatisierte Bereitstellung verwendet. Obwohl ich mich mehrheitlich mit der Dokumentation beschäftigt habe, habe ich trotzdem vieles zur Verknüpfung der einzelnen Komponente in AWS gelernt. Ich hätte es noch gut gefunden, wenn wir im Unterricht ähnliche Aufgabenstellungen erhalten hätten, damit wir beim ersten Anblick nicht schokiert wären und direkt mit der Umsetzung beginnen könnten.
 
 ##### Zusammenarbeit:
+Die Zusammenarbeit fand ich gut. Wir hatten keine Unklarheiten, wer was machen sollte, da wir es im vorhinein gut abgesprochen hatten. Natürlich haben wir uns gegenseitig immer unterstützt.
 
 ##### Zeitdruck und Herausforderung:
+Am Anfang dachten wir, dass wir genügend Zeit haben, weshalb wir uns nicht gestresst gefühlt haben. Im Laufe des Projekts kamen dann Schwierigkeiten und wir verloren somit Zeit bei der Programmierung als auch der Dokumentation. Am Ende kamen wir dann ins Stress und merkten, dass wir uns von Anfang an deutlich mehr mit dem Thema hätten befassen sollen.
 
 ## 7. Anhang
 
