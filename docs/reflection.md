@@ -26,13 +26,18 @@
   
   - Ein wichtiger Verbesserungspunkt für zukünftige Projekte wäre das Zeitmanagement sowie die eigene Motivation. Ich habe gemerkt, dass ich den zeitlichen Aufwand unterschätzt habe und wir insgesamt sehr lange an dem Projekt gearbeitet haben Zudem fehlte mir zeitweise die Motivation, wodurch sich die Bearbeitung des Projekts verzögerte. In einem nächsten Projekt würde ich daher früher auf die Lehrperson zugehen, um mir mehr Unterstützung zu holen.
 
-## Person 3 – [Name]
+## Person 3 – Merve Yigit
 - Was lief gut?
-  - [eintragen]
+  
+  - Im Verlauf des Projekts entwickelte sich die Zusammenarbeit im Team sehr gut. Der regelmässige Austausch innerhalb der Gruppe half dabei, Probleme frühzeitig zu erkennen und gemeinsam Lösungen zu finden. Durch die praktische Arbeit mit AWS konnte ich mein technisches Verständnis erweitern und Zusammenhänge zwischen den einzelnen Komponenten besser nachvollziehen. Besonders hilfreich war es, dass wir uns gegenseitig unterstützten und Wissen teilten, wodurch alle vom Projekt profitieren konnten.
+    
 - Was lief nicht gut / Probleme?
-  - [eintragen]
+  
+  - Zu Beginn des Projekts war der Ablauf nicht klar definiert, was den Einstieg erschwerte. Die Arbeit mit neuen Technologien und Services brachte einige Herausforderungen mit sich, da nicht immer ausreichend Dokumentationen vorhanden waren. Dadurch kam es zu Verzögerungen, Fehlversuchen und teilweise auch zu Unsicherheiten im Vorgehen. In gewissen Phasen fehlte zudem eine klare Struktur, was den Arbeitsprozess weniger effizient machte.
+    
 - Konkrete Verbesserungen für ein naechstes Projekt
-  - [eintragen]
+
+  - Für zukünftige Projekte würde ich mir wünschen, bereits zu Beginn eine klarere Planung zu erstellen und offene Fragen frühzeitig zu klären. Eine bessere Zeitplanung sowie eine realistischere Einschätzung des Aufwands würden helfen, Stress zu reduzieren. Zudem würde ich bei Unklarheiten schneller Unterstützung bei der Lehrperson oder im Team suchen, um Probleme effizienter lösen zu können. 
 
 ## Team-Fazit
 - Was würde das Team sofort wieder gleich machen?
