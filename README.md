@@ -20,13 +20,13 @@
        4.2.4 [Konfiguration (optional per ENV)](#424-konfiguration-(optional-per-env))
        4.2.5 [Ergebnisformat (JSON)](#425-ergebnisformat-(json))
        4.2.6 [Repository-Inhalt](#426-repository-inhalt)
-5. [Dokumentation](#44-dokumentation)  
+6. [Dokumentation](#44-dokumentation)  
    5.1 [Strukturierung der Dokumentation](#441-strukturierung-der-dokumentation)  
    5.2 [Regelmässige Commits und Git-Nutzung](#442-regelmässige-commits-und-git-nutzung)  
-6. [Tests und Protokolle](#45-tests-und-protokolle)  
-7. [Reflexion](#6-reflexion)   
-8. [Anhang](#7-anhang)
-9. [Quellen](#9-quellen)
+7. [Tests und Protokolle](#45-tests-und-protokolle)  
+8. [Reflexion](#6-reflexion)   
+9. [Anhang](#7-anhang)
+10. [Quellen](#9-quellen)
    
 
 ## 1. Einleitung
