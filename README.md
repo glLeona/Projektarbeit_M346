@@ -14,25 +14,19 @@
    4.1 [Projektinitialisierung](#41-projektinitialisierung)  
        4.1.1 [Teamzusammensetzung und Rollenverteilung](#411-teamzusammensetzung-und-rollenverteilung)  
    4.2 [Umsetzung](#42-umsetzung)  
-       4.2.1 [AWS-Komponenten erstellen und konfigurieren](#421-aws-komponenten-erstellen-und-konfigurieren)  
-       4.2.2 [Gesamtaufbau](#422-gesamtaufbau)  
-       4.2.3 [Programmierung der Gesichtserkennung](#423-programmierung-der-gesichtserkennung)  
-   4.3 [Dokumentation](#44-dokumentation)  
-       4.3.1 [Strukturierung der Dokumentation](#441-strukturierung-der-dokumentation)  
-       4.3.2 [Regelmässige Commits und Git-Nutzung](#442-regelmässige-commits-und-git-nutzung)  
-   4.4 [Testdurchführung](#45-testdurchführung)  
-       4.4.1 [Definition von Testfällen](#451-definition-von-testfällen)  
-       4.4.2 [Durchführung der Tests und Protokollierung](#452-durchführung-der-tests-und-protokollierung)  
-5. [Tests](#5-tests)
-   5.1 [Testcase 1](#51-testcase-1)
-   5.2 [Testcase 2](#52-testcase-2)
-7. [Reflexion](#6-reflexion)  
-   6.1 [Reflexion Davina](#61-reflexion-davina)  
-   6.2 [Reflexion Leona](#62-reflexion-leona)  
-   6.3 [Reflexion Merve](#63-reflexion-merve)  
-8. [Anhang](#7-anhang)  
-9. [Test Case](#8-test-case)  
-10. [Quellen](#9-quellen)
+       4.2.1 [Architektur](#421-architektur)  
+       4.2.2 [Voraussetzungen (Client)](#422-voraussetzungen-(client))  
+       4.2.3 [Quickstart (vollautomatisiert)](#423-quickstart-(vollautomatisiert))
+       4.2.4 [Konfiguration (optional per ENV)](#424-konfiguration-(optional-per-env))
+       4.2.5 [Ergebnisformat (JSON)](#425-ergebnisformat-(json))
+       4.2.6 [Repository-Inhalt](#426-repository-inhalt)
+5. [Dokumentation](#44-dokumentation)  
+   5.1 [Strukturierung der Dokumentation](#441-strukturierung-der-dokumentation)  
+   5.2 [Regelmässige Commits und Git-Nutzung](#442-regelmässige-commits-und-git-nutzung)  
+6. [Tests und Protokolle](#45-tests-und-protokolle)  
+7. [Reflexion](#6-reflexion)   
+8. [Anhang](#7-anhang)
+9. [Quellen](#9-quellen)
    
 
 ## 1. Einleitung
@@ -98,112 +92,68 @@ Siehe: docs/architecture.md
 Windows:
 - via WSL oder Git Bash
 
-#### 4.2.2. Quickstart (vollautomatisiert)
+#### 4.2.3. Quickstart (vollautomatisiert)
 ```
 chmod +x Scripts/init.sh Scripts/test.sh
 ./Scripts/init.sh
 ./Scripts/test.sh <pfad/zum/bild.jpg>
 ```
 
-#### 4.2.3. Programmierung der Gesichtserkennung
+#### 4.2.4. Konfiguration (optional per ENV)
+```
+export AWS_REGION="eu-central-1"
+export PROJECT_PREFIX="m346-facerec"
+export IN_BUCKET="m346-facerec-<account>-in"
+export OUT_BUCKET="m346-facerec-<account>-out"
+export LAMBDA_NAME="m346-facerec-lambda"
+```
 
-Die Programmierung der Gesichtserkennugsfunktionalität erfolgte unter Verwendnung von C# in Visual Studio. Der Code wurde so gestaltet, das er genügend Kommentare fürs Verständnis erhält.
+#### 4.2.5. Ergebnisformat (JSON)
 
-## 4.4. Dokumentation
+Die Lambda-Funktion schreibt eine JSON-Datei mit unter anderem:
+- SourceImage.Bucket, SourceImage.Key
+- Celebrities[]: Name, MatchConfidence, Id, Urls
+- UnrecognizedFaces
+- ProcessedAtUtc
 
-### 4.4.1. Strukturierung der Dokumentation
+Beispiel-Ausgabe (gekürzt):
+```
+{
+  "SourceImage": { "Bucket": "…", "Key": "…" },
+  "Celebrities": [
+    { "Name": "…", "MatchConfidence": 99.9, "Id": "…", "Urls": ["…"] }
+  ],
+  "UnrecognizedFaces": 0,
+  "ProcessedAtUtc": "2025-12-23T00:00:00Z"
+}
+```
+#### 4.2.6. Repository-Inhalt
+
+- Function.cs – Lambda Handler (gegeben, unveraendert)
+- Scripts/init.sh – vollautomatische Inbetriebnahme (idempotent)
+- Scripts/test.sh – vollautomatischer Test inkl. JSON Download + Output
+- infra/ – IAM Trust + Policy Template + generiertes S3 Notification JSON
+- docs/ – Dokumentation (Architektur, Tests, Reflexion)
+  
+## 5. Dokumentation
+
+### 5.1. Strukturierung der Dokumentation
 
 Die Dokumentation wurde gemäss den Vorgaben in Markdown geschrieben. Die Struktur folgt den Leitfragen und Gütestufen des Projektauftrags, um eine klare und nachvollziehbare Dokumentation zu gewähleisten.
 
-### 4.4.2. Regelmässige Commits und Git-Nutzung
+### 5.2. Regelmässige Commits und Git-Nutzung
 
 Um eine effiziente Zusammenarbeit sicherzustellen, wurden regelmässig Commits im Git-Repository durchgeführt. Jede Person hat nach Angabe minimal einen Commit gemacht, sei es beim Programmieren oder beim Schreiben der Dokumentation. Die Git-Nutzung erstreckte sich über die gesamte Projektdauer.
 
-## 4.5. Testdurchführung
+## 6. Tests und Protokolle
 
-### 4.5.1. Definition von Testfällen
+- Testfälle + Screenshots: docs/tests.md
+- Ablage Screenshots: docs/screenshots/
 
-Vor der Testdurchführung wurden klare Testfälle definiert, um die Funktionalität und Performance des Services sicherzustellen.
+## 7. Reflexion
 
-### 4.5.2. Durchführung der Tests und Protokollierung
+- Reflexion pro Teammitglied: docs/reflection.md
 
-Die Tests wurden durchgeführt und mittels Screenshots dokumentiert. Das Testprotokoll enthält Informationen zu Testzeitpunkten, Testpersonen und bietet aussagekräftige Fazits zu den Testergebnissen.
-
-## 5. Tests
-In diesem Projekt wurden verschiedene Tests durchgeführt, um sicherzustellen, dass die implementierte Cloudlösung den definierten Anforderungen entspricht. Die Tests umfassen sowohl manuelle als auch automatisierte Prüfungen, um die Zuverlässigkeit, Sicherheit und Funktionalität der Lösung sicherzustellen.
-
-### 5.1 Testcase 1
-
-| Test Nr.    | Name           | Tester    |
-|:-----------:|:--------------:|:---------:|
-| T1          | Barack Obama   | Davina    |
-
-Testdatum: 22. Dezember 2025
-Testperson: Davina
-Testumgebung: AWS Learner Lab
-
-Ablauf:
-
-- Bild von Obama hochgeladen
-- Fehlermeldung kam:
-
-Fehlermeldung Cloud Shell:
-```
-fatal error: An error occurred (404) when calling the HeadObject operation: Key "Test.jpg.json" does not exist
-```
-
-Fehlermeldung Cloud Watch:
-```
-Error: .NET binaries for Lambda function are not correctly installed in the /var/task directory of the image when the image was built. The /var/task directory is missing the required .deps.json file.
-```
-Status: Nicht erfolgreich
-Bemerkungen: Es gibt keine JSON-Datei zurück.
-
-### 5.2 Testcase 2
-
-| Test Nr.    | Name           | Tester    |
-|:-----------:|:--------------:|:---------:|
-| T2          | Script         | Davina    |
-
-Testdatum: 22. Dezember 2025
-Testperson: Davina
-Testumgebung: AWS Learner Lab
-
-Status:
-Das Skript kann ausgeführt werden, jedoch kommt keine JSON-Datei am Ende.
-
-## 6. Reflexion
-
-#### 6.1. Reflexion Davina
-
-##### Lernerfahrung:
-Bei diesem Projekt habe ich gelernt, wie Gesichtserkennung mit AWS Rekognition funktioniert und wie ein technischer Ablauf von der Bilderfassung bis zur Auswertung aufgebaut ist. Da keine Dokumentation zur Verfügung gestellt wurde, musste ich mir die benötigten Informationen selbstständig aus dem Internet zusammensuchen. Dies war teilweise anspruchsvoll, hat mir jedoch geholfen, meine Recherchefähigkeiten zu verbessern und technische Inhalte besser zu verstehen. Außerdem konnte ich mein Wissen über cloudbasierte Services und deren Einsatz im Bereich der Gesichtserkennung erweitern.
-
-##### Zusammenarbeit:
-Die Zusammenarbeit in der Gruppe war gut. Wir haben die Aufgaben klar aufgeteilt, wobei ein Teil der Gruppe für die praktische Umsetzung mit AWS Rekognition zuständig war und der andere Teil für die Dokumentation. Trotz dieser Aufteilung haben wir uns regelmässig ausgetauscht, Zwischenergebnisse überprüft und uns gegenseitig unterstützt. So konnten wir sicherstellen, dass sowohl die praktische Arbeit als auch die Dokumentation korrekt und verständlich umgesetzt wurden.
-
-##### Zeitdruck und Herausforderung:
-Zu Beginn des Projekts gab es einige Schwierigkeiten, da zunächst unklar war, wie AWS Rekognition genau funktioniert und welche Schritte notwendig sind, um die Aufgabe umzusetzen. Da keine Dokumentation vorhanden war, musste erst recherchiert und ausprobiert werden, was viel Zeit in Anspruch nahm. Dadurch entstand zusätzlicher Zeitdruck, was teilweise stressig war. Mit zunehmendem Verständnis und durch den Austausch im Team wurde die Vorgehensweise jedoch klarer. So konnten die Aufgaben strukturierter bearbeitet und Probleme gemeinsam gelöst werden, was den Arbeitsprozess deutlich erleichtert hat.
-
-#### 6.2. Reflexion Leona
-
-##### Lernerfahrung:
-
-##### Zusammenarbeit:
-
-##### Zeitdruck und Herausforderung:
-
-#### 6.3. Reflexion Merve
-
-##### Lernerfahrung:
-Das Projekt hat meine Kenntnisse in Cloud-Technologien, insbesondere AWS, erweitert. Ich habe gelernt, wie man effizient S3-Buckets einrichtet, Lambda-Funktionen konfiguriert und CloudFormation für die automatisierte Bereitstellung verwendet. Obwohl ich mich mehrheitlich mit der Dokumentation beschäftigt habe, habe ich trotzdem vieles zur Verknüpfung der einzelnen Komponente in AWS gelernt. Ich hätte es noch gut gefunden, wenn wir im Unterricht ähnliche Aufgabenstellungen erhalten hätten, damit wir beim ersten Anblick nicht schokiert wären und direkt mit der Umsetzung beginnen könnten.
-
-##### Zusammenarbeit:
-Die Zusammenarbeit fand ich gut. Wir hatten keine Unklarheiten, wer was machen sollte, da wir es im vorhinein gut abgesprochen hatten. Natürlich haben wir uns gegenseitig immer unterstützt.
-
-##### Zeitdruck und Herausforderung:
-Am Anfang dachten wir, dass wir genügend Zeit haben, weshalb wir uns nicht gestresst gefühlt haben. Im Laufe des Projekts kamen dann Schwierigkeiten und wir verloren somit Zeit bei der Programmierung als auch der Dokumentation. Am Ende kamen wir dann ins Stress und merkten, dass wir uns von Anfang an deutlich mehr mit dem Thema hätten befassen sollen.
-
-## 7. Anhang
+## 8. Anhang
 
 ## 9. Quellen
