@@ -31,6 +31,6 @@
 
 ## Team-Fazit
 - Was würde das Team sofort wieder gleich machen?
-  - [eintragen]
+  - 
 - Was würde das Team anders machen?
-  - [eintragen]
+  - Unser Zeitmanagement könnte man aufjedenfall verbessern, da wir am Ende ziemlich viel Stress hatten.
