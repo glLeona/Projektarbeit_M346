@@ -8,6 +8,8 @@ AWS_REGION="${AWS_REGION:-us-east-1}"
 
 
 ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+TS=$(date -u +"%Y%m%d%H%M%S")
+SHORT_HEX=$(openssl rand -hex 4)
 
 BUCKET_IN="project-in-bucket-${ACCOUNT_ID}-${TS}-${SHORT_HEX}"
 BUCKET_OUT="project-out-bucket-${ACCOUNT_ID}-${TS}-${SHORT_HEX}"
