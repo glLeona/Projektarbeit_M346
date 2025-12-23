@@ -37,5 +37,8 @@
 ## Team-Fazit
 - Was würde das Team sofort wieder gleich machen?
   - 
+Wir würden die Teamaufteilung definitiv beibehalten, da sie es ermöglicht, die individuellen Stärken der einzelnen Personen gezielt zu fördern. Zudem ist nicht jede Person gleich stark an denselben Aufgaben interessiert oder arbeitet gleich gerne an bestimmten Themen, weshalb bei der Aufteilung auch darauf Rücksicht genommen werden konnte.
+Ein weiterer wichtiger Punkt war die Zusammenarbeit. Es arbeitete nicht nur eine einzelne Person am Projekt, sondern alle Beteiligten engagierten sich gleichermassen. Wir verfolgten gemeinsam das gleiche Ziel und arbeiteten geschlossen am Erfolg des Projekts.
+
 - Was würde das Team anders machen?
   - Unser Zeitmanagement könnte man aufjedenfall verbessern, da wir am Ende ziemlich viel Stress hatten.
