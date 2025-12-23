@@ -7,19 +7,18 @@ using Amazon.Lambda.S3Events;
 using Amazon.Rekognition;
 using Amazon.Rekognition.Model;
 using Amazon.S3;
-using Amazon.Lambda.APIGatewayEvents;
 
 // Damit Lambda das Event korrekt serialisiert / deserialisiert:
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
 
-namespace faceRecognition;
+namespace FaceRecognitionLambda;
 
 /// <summary>
-/// Lambda-Funktion f�r die Erkennung bekannter Pers�nlichkeiten auf Bildern,
+/// Lambda-Funktion für die Erkennung bekannter Persönlichkeiten auf Bildern,
 /// die in einen S3-Input-Bucket hochgeladen werden.
 /// 
 /// Ablauf:
-/// 1. S3-Event l�st Lambda aus, wenn ein neues Objekt hochgeladen wird.
+/// 1. S3-Event löst Lambda aus, wenn ein neues Objekt hochgeladen wird.
 /// 2. Rekognition (RecognizeCelebrities) wird aufgerufen.
 /// 3. Ergebnis wird als JSON-Datei in einen Output-Bucket geschrieben.
 /// 
@@ -45,7 +44,7 @@ public class Function
     }
 
     /// <summary>
-    /// Konstruktor f�r Tests / Dependency Injection.
+    /// Konstruktor für Tests / Dependency Injection.
     /// </summary>
     public Function(IAmazonRekognition rekognitionClient, IAmazonS3 s3Client)
     {
@@ -60,15 +59,12 @@ public class Function
     /// konfigurierten S3-Input-Bucket hochgeladen wird.
     /// </summary>
     /// <param name="s3Event">Das S3-Event mit Informationen zum hochgeladenen Objekt.</param>
-    /// <param name="context">Lambda-Kontext (f�r Logging etc.).</param>
+    /// <param name="context">Lambda-Kontext (für Logging etc.).</param>
     public async Task FunctionHandler(S3Event s3Event, ILambdaContext context)
     {
         if (string.IsNullOrWhiteSpace(_outputBucket))
         {
-            context.Logger.LogError(
-                "Environment variable OUTPUT_BUCKET is not set. " +
-                "Please ensure the Lambda function has the OUTPUT_BUCKET environment variable configured. " +
-                "Aborting function execution.");
+            context.Logger.LogError("Environment variable OUTPUT_BUCKET is not set. Aborting.");
             return;
         }
 
@@ -82,7 +78,7 @@ public class Function
 
             try
             {
-                // 1. Rekognition f�r Celebrity-Erkennung aufrufen
+                // 1. Rekognition für Celebrity-Erkennung aufrufen
                 var request = new RecognizeCelebritiesRequest
                 {
                     Image = new Image
@@ -110,7 +106,7 @@ public class Function
                         c.Name,
                         c.MatchConfidence,
                         c.Id,
-                        Urls = c.Urls,     // Links zu Infos �ber die erkannte Person
+                        Urls = c.Urls,     // Links zu Infos über die erkannte Person
                     }),
                     UnrecognizedFaces = response.UnrecognizedFaces.Count,
                     OrientationCorrection = response.OrientationCorrection,
@@ -123,7 +119,7 @@ public class Function
                     new JsonSerializerOptions { WriteIndented = true }
                 );
 
-                // 4. Dateinamen f�r das Ergebnis bestimmen (gleicher Name, aber .json)
+                // 4. Dateinamen für das Ergebnis bestimmen (gleicher Name, aber .json)
                 var fileNameWithoutExtension = Path.GetFileNameWithoutExtension(objectKey);
                 var outputKey = $"{fileNameWithoutExtension}.json";
 
@@ -141,19 +137,8 @@ public class Function
             }
             catch (Exception ex)
             {
-                // Fehler werden geloggt, Lambda soll aber nicht komplett abst�rzen
-                context.Logger.LogError(
-                    $"Error processing object {bucketName}/{objectKey}: {ex.Message}\n" +
-                    $"Stack trace: {ex.StackTrace}\n" +
-                    $"Exception type: {ex.GetType().Name}");
-                
-                // Bei S3-Schreibfehlern zustzliche Informationen loggen
-                if (ex is Amazon.S3.AmazonS3Exception s3Ex)
-                {
-                    context.Logger.LogError(
-                        $"S3 Error Code: {s3Ex.ErrorCode}, Status Code: {s3Ex.StatusCode}, " +
-                        $"Target Bucket: {_outputBucket}");
-                }
+                // Fehler werden geloggt, Lambda soll aber nicht komplett abstürzen
+                context.Logger.LogError($"Error processing object {bucketName}/{objectKey}: {ex}");
             }
         }
     }

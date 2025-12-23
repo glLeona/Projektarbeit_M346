@@ -6,9 +6,11 @@
     "All the command line options for the Lambda command can be specified in this file."
   ],
   "profile": "",
-  "region": "us-east-1",
+  "region": "",
   "configuration": "Release",
-  "s3-prefix": "facerecognition/",
-  "template": "serverless.template",
-  "template-parameters": ""
+  "function-architecture": "x86_64",
+  "function-runtime": "dotnet8",
+  "function-memory-size": 512,
+  "function-timeout": 30,
+  "function-handler": "FaceRecognitionLambda::FaceRecognitionLambda.Function::FunctionHandler"
 }
