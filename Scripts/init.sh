@@ -6,11 +6,19 @@ set -euo pipefail
 # -----------------------------
 AWS_REGION="${AWS_REGION:-us-east-1}"
 
-ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
-IN_BUCKET="${IN_BUCKET:-m346-facerec-${ACCOUNT_ID}-in}"
-OUT_BUCKET="${OUT_BUCKET:-m346-facerec-${ACCOUNT_ID}-out}"
+USER_ID=$(aws sts get-caller-identity --query Account --output text)
+TS=$(date -u +"%Y%m%d%H%M%S")
+SHORT_HEX=$(openssl rand -hex 4)
+ 
+BUCKET_IN="-m346-facerec-${USER_ID}-${TS}-${SHORT_HEX}"
+BUCKET_OUT="-m346-facerec-${USER_ID}-${TS}-${SHORT_HEX}"
+LAMBDA_FUNCTION="project-bucket_${USER_ID}_${TS}_${SHORT_HEX}"
 
-LAMBDA_NAME="${LAMBDA_NAME:-m346-facerec-lambda}"
+#ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
+#IN_BUCKET="${IN_BUCKET:-m346-facerec-${ACCOUNT_ID}-in}"
+#OUT_BUCKET="${OUT_BUCKET:-m346-facerec-${ACCOUNT_ID}-out}"
+
+#LAMBDA_NAME="${LAMBDA_NAME:-m346-facerec-lambda}"
 
 # Wunschrollenname (wird im Learner Lab oft NICHT erstellbar sein)
 ROLE_NAME="${ROLE_NAME:-m346-facerec-lambda-role}"
